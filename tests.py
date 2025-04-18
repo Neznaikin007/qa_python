@@ -96,8 +96,9 @@ class TestBooksCollector:
                                  ['Шерлок','Детектив'],
                                  ['Алиса','Фантастика']
                              ])
-    def test_get_list_of_favorites_books_have_books(self, books_collector, genre, name):
+    def test_get_list_of_favorites_books_have_books(self, books_collector, name, genre):
         books_collector.add_new_book(name)
-        books_collector.set_book_genre(name, genre)
+        books_collector.set_book_genre(name,genre)
         books_collector.add_book_in_favorites(name)
-        assert name in books_collector.get_list_of_favorites_books()
+        favorite_books = books_collector.get_list_of_favorites_books()
+        assert favorite_books == [name]
